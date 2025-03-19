@@ -2,13 +2,13 @@
 
 This is a simple example project and guide meant to demonstrate the pipeline for testing and getting results for the Shell Eco-marathon APC.
 
-**Note:** This is the branch for the ROS1 Noetic package. For info on the ROS2 Humble package, navigate to the ROS2 branch.
+**Note:** This is the branch for the ROS1 Noetic package. For info on the ROS2 Humble package, navigate to the [ROS2 branch](https://github.com/swri-robotics/sem-apc-example-project/tree/ros2).
 
 ## Requirements
 
 [Ubuntu Linux 20.04](https://releases.ubuntu.com/20.04.6/?_gl=1*19ip6hm*_gcl_au*MTE4NTIyOTI0MS4xNzA3MTMxMDQx&_ga=2.54194216.1653550288.1740769332-1322449747.1740769332) and [ROS1 Noetic](https://wiki.ros.org/noetic)
 
-Use the APC Docker environment to set up ROS and CARLA or set up [ROS](https://wiki.ros.org/noetic/Installation/Ubuntu) and [CARLA](https://carla.readthedocs.io/en/0.9.15/start_quickstart/) locally.
+Use the [APC Docker environment](https://github.com/swri-robotics/sem-apc-student-docker-environment) to set up ROS and CARLA or set up [ROS](https://wiki.ros.org/noetic/Installation/Ubuntu) and [CARLA](https://carla.readthedocs.io/en/0.9.15/start_quickstart/) locally.
 
 Important considerations for the competition:
 * Project submissions are compiled in a fresh Linux and ROS environment.
@@ -22,7 +22,7 @@ The map and goal points will be revealed before the start of the competition.
 
 ## Running the Example
 
-After building your APC Docker environment (recommended) or installing and configuring ROS and CARLA locally, you should now be able to develop, build, and run your code to control the vehicle in simulation. Let's run an example that moves the vehicle forward to show you how to build and run your code to control the vehicle.
+After building your [APC Docker environment](https://github.com/swri-robotics/sem-apc-student-docker-environment) (recommended) or installing and configuring ROS and CARLA locally, you should now be able to develop, build, and run your code to control the vehicle in simulation. Let's run an example that moves the vehicle forward to show you how to build and run your code to control the vehicle.
 
 1. If you are using Docker, make sure the carla_server and ros_environment containers are running and that you have entered your ros_environment container *(If you are running ROS and CARLA locally, startup CARLA and skip this step.)*:
 
