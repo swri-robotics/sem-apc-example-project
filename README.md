@@ -48,7 +48,7 @@ After building your [APC Docker environment](https://github.com/swri-robotics/se
 
     This should open up an Rviz window displaying vehicle sensor data.
 
-    There are also a variety of parameters within the carla-interface package that can be modified to configure the simulation and perform tasks such as selecting a different map, setting a spawn point, and generating traffic. To change these parameters, modify the values in the `carla_config.yaml` file located in your ROS workspace: `~/shell_ws/src/carla-interface/config/carla_config.yaml`
+    There are also a variety of parameters within the [carla-interface](https://github.com/swri-robotics/sem-apc-carla-interface/tree/ros2) package that can be modified to configure the simulation and perform tasks such as selecting a different map, setting a spawn point, and generating traffic. To change these parameters, modify the values in the `carla_config.yaml` file located in your ROS workspace: `~/shell_ws/src/carla-interface/config/carla_config.yaml`
 
     *Note, you will need to relaunch the carla_shell_bridge for these changes to take effect.*
 
