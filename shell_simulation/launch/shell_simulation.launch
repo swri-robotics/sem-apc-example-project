@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+ <!-- Example ROS launch file -->
+<launch>
+
+    <node pkg="shell_simulation" type="example_control.py" name="example_control_python" output="screen"/>
+
+</launch>
