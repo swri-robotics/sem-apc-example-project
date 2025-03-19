@@ -2,50 +2,51 @@
  * Creates an example node to drive the vehicle forward in the CARLA simulation.
  */
 
-#include <ros/ros.h>
-#include <std_msgs/String.h>
-#include <std_msgs/Float64.h>
+#include "rclcpp/rclcpp.hpp"
+
+#include "std_msgs/msg/float64.hpp"
+#include "std_msgs/msg/string.hpp"
+
+#include <iostream>
 
 int main(int argc, char *argv[])
 {
   // Initialize ROS and create a new node
-  ros::init(argc, argv, "example_node");
-  ros::NodeHandle nh;
+  rclcpp::init(argc, argv);
+  auto example_node = rclcpp::Node::make_shared("example_node");
 
   // Set up publishers
-  ros::Publisher brake_pub = nh.advertise<std_msgs::Float64>("brake_command", 1);
-  ros::Publisher gear_pub = nh.advertise<std_msgs::String>("gear_command", 1);
-  ros::Publisher steering_pub = nh.advertise<std_msgs::Float64>("steering_command", 1);
-  ros::Publisher throttle_pub = nh.advertise<std_msgs::Float64>("throttle_command", 1);
-
-  // Wait for publishers to initialize
-  sleep(1.0);
+  auto brake_pub_ = example_node->create_publisher<std_msgs::msg::Float64>("brake_command", 1);
+  auto gear_pub_ = example_node->create_publisher<std_msgs::msg::String>("gear_command", 1);
+  auto steering_pub_ = example_node->create_publisher<std_msgs::msg::Float64>("steering_command", 1);
+  auto throttle_pub_ = example_node->create_publisher<std_msgs::msg::Float64>("throttle_command", 1);
 
   // Create control messages
-  std_msgs::Float64 brake_msg;
-  std_msgs::String gear_msg;
-  std_msgs::Float64 steering_msg;
-  std_msgs::Float64 throttle_msg;
+  std_msgs::msg::Float64 brake_msg;
+  std_msgs::msg::String gear_msg;
+  std_msgs::msg::Float64 steering_msg;
+  std_msgs::msg::Float64 throttle_msg;
 
   // Set brake power to 0 and publish brake message
   brake_msg.data = 0.0;
-  brake_pub.publish(brake_msg);
+  brake_pub_->publish(brake_msg);
 
   // Set gear to forward and publish gear message
   gear_msg.data = "forward";
-  gear_pub.publish(gear_msg);
+  gear_pub_->publish(gear_msg);
 
   // Set steering position and publish steering message
   steering_msg.data = 0.0;
-  steering_pub.publish(steering_msg);
+  steering_pub_->publish(steering_msg);
 
   // Set throttle to 0.3 and publish throttle message
   throttle_msg.data = 0.3;
-  throttle_pub.publish(throttle_msg);
+  throttle_pub_->publish(throttle_msg);
 
-  ROS_INFO_STREAM("Test control messages have been published from C++. Vehicle should be moving!");
+  RCLCPP_INFO(example_node->get_logger(), "Test control messages have been published from C++. Vehicle should be moving!");
 
   sleep(5.0);
-  
+
+  rclcpp::shutdown();
   return 0;
 }

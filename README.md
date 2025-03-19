@@ -2,13 +2,13 @@
 
 This is a simple example project and guide meant to demonstrate the pipeline for testing and getting results for the Shell Eco-marathon APC.
 
-**Note:** This is the branch for the ROS1 Noetic package. For info on the ROS2 Humble package, navigate to the ROS2 branch.
+**Note:** This is the branch for the ROS2 Humble package. For info on the ROS1 Noetic package, navigate to the [ROS1 branch](https://github.com/swri-robotics/sem-apc-example-project).
 
 ## Requirements
 
-[Ubuntu Linux 20.04](https://releases.ubuntu.com/20.04.6/?_gl=1*19ip6hm*_gcl_au*MTE4NTIyOTI0MS4xNzA3MTMxMDQx&_ga=2.54194216.1653550288.1740769332-1322449747.1740769332) and [ROS1 Noetic](https://wiki.ros.org/noetic)
+[Ubuntu Linux 22.04](https://ubuntu.com/download/desktop) and [ROS2 Humble](https://docs.ros.org/en/humble/)
 
-Use the APC Docker environment to set up ROS and CARLA or set up [ROS](https://wiki.ros.org/noetic/Installation/Ubuntu) and [CARLA](https://carla.readthedocs.io/en/0.9.15/start_quickstart/) locally.
+Use the [APC Docker environment](https://github.com/swri-robotics/sem-apc-student-docker-environment) to set up ROS and CARLA or set up [ROS](https://docs.ros.org/en/humble/Installation/Ubuntu-Install-Debs.html) and [CARLA](https://carla.readthedocs.io/en/0.9.15/start_quickstart/) locally.
 
 Important considerations for the competition:
 * Project submissions are compiled in a fresh Linux and ROS environment.
@@ -22,7 +22,7 @@ The map and goal points will be revealed before the start of the competition.
 
 ## Running the Example
 
-After building your APC Docker environment (recommended) or installing and configuring ROS and CARLA locally, you should now be able to develop, build, and run your code to control the vehicle in simulation. Let's run an example that moves the vehicle forward to show you how to build and run your code to control the vehicle.
+After building your [APC Docker environment](https://github.com/swri-robotics/sem-apc-student-docker-environment) (recommended) or installing and configuring ROS and CARLA locally, you should now be able to develop, build, and run your code to control the vehicle in simulation. Let's run an example that moves the vehicle forward to show you how to build and run your code to control the vehicle.
 
 1. If you are using Docker, make sure the carla_server and ros_environment containers are running and that you have entered your ros_environment container *(If you are running ROS and CARLA locally, startup CARLA and skip this step.)*:
 
@@ -36,32 +36,36 @@ After building your APC Docker environment (recommended) or installing and confi
 
 3. Build your ROS workspace:
 
-    `catkin_make`
+    `colcon build`
 
 4. Source your workspace:
 
-    `source devel/setup.bash`
+    `source install/setup.bash`
 
 5. Launch the carla_shell_bridge interface to setup the server world and spawn a vehicle to control:
 
-    `roslaunch carla_shell_bridge main.launch`
+    `ros2 launch carla_shell_bridge main.launch.py`
 
     This should open up an Rviz window displaying vehicle sensor data.
 
-    There are also a variety of parameters within the carla-interface package that can be modified to configure the simulation and perform tasks such as selecting a different map, setting a spawn point, and generating traffic. To change these parameters, modify the values in the `main.launch` file located in your ROS workspace: `~/shell_ws/src/carla-interface/launch/main.launch`
+    There are also a variety of parameters within the carla-interface package that can be modified to configure the simulation and perform tasks such as selecting a different map, setting a spawn point, and generating traffic. To change these parameters, modify the values in the `carla_config.yaml` file located in your ROS workspace: `~/shell_ws/src/carla-interface/config/carla_config.yaml`
 
     *Note, you will need to relaunch the carla_shell_bridge for these changes to take effect.*
 
 6. Finally, open a new terminal, enter your ros_environment container and ROS workspace as shown in steps 1 and 2 *(skip step 1 if you are running ROS locally)*, and source your workspace as shown in step 4. You can now run either the C++ or Python example node that moves the vehicle forward!
     
-    `rosrun shell_simulation example_control`
+    `ros2 run shell_simulation example_control`
     
     or
 
-    `rosrun shell_simulation example_control.py`
+    `ros2 run shell_simulation example_control.py`
 
 ## General Tips
 - Since your workspace is mounted to the ros_environment Docker container, you can simply edit your code locally in your ROS workspace with your favorite text editor, and all the changes will be synced to the Docker container automatically.
+
+- While building your ROS packages, you can use the following command to only build a specific package which can greatly reduce build time:
+
+  `colcon build --packages-select <YOUR_PACKAGE_NAME>`
 
 - If you encounter a spawning error with the ego vehicle (`Exception caught: Spawn failed because of collision at spawn position`) you may need to change the spawn point parameter in the `carla_config.yaml` file. The Z coordinate may need to be set to something greater than 0. You can also change this parameter to "None" which will spawn the vehicle in a random, valid position on the map.
 
