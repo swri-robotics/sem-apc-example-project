@@ -14,8 +14,9 @@ Important considerations for the competition:
 * Project submissions are compiled in a fresh Linux and ROS environment.
 * Any software dependencies must be defined properly in the [catkin package manifest](http://wiki.ros.org/catkin/package.xml) and will be installed at build time by [rosdep](http://wiki.ros.org/rosdep).
 * All ROS packages must [install](http://wiki.ros.org/catkin/CMakeLists.txt#Optional_Step:_Specifying_Installable_Targets) themselves when built; the source code will not be present in the simulation environment, only installed targets.
-* All project submissions ***must*** have a package named `shell_simulation` with a launch file named `shell_simulation.launch.py` that requires no parameters or arguments in order to run; this is used as the entry point for launching the project.
+* All project submissions ***must*** have a package named `shell_simulation` with a launch file named `shell_simulation.launch` that requires no parameters or arguments in order to run; this is used as the entry point for launching the project.
 * Uploaded projects ***must*** be named `project.zip` and contain only the source code of ROS packages.
+* Uploaded projects must also ***not include*** the `sem-apc-carla-interface` and `sem-apc-ros-bridge` directories as these packages are only used for student development and are not allowed in the final submission.
 * The simulation will automatically end after either all goals have been reached or after it has been running for 10 minutes.
 
 The map and goal points will be revealed before the start of the competition.
