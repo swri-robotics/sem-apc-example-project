@@ -23,7 +23,7 @@ Important considerations for the competition:
 This year's official competition map is `Town_01`
 ![2025_map](images/2025_season_map.png)
 
-The green dot on the map indicates the starting point and the red dots indicate all goal waypoints. For the competition, the starting waypoint and fourteen target waypoints are as follows:
+The green dot on the map indicates the starting point and the red dots indicate all goal waypoints. For the competition, the starting waypoint and fourteen target waypoints are as follows `[x,y,z]`:
 
 ### Starting Waypoint
 ```
