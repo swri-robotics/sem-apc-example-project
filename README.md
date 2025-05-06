@@ -19,7 +19,33 @@ Important considerations for the competition:
 * Uploaded projects must also ***not include*** the `sem-apc-carla-interface` and `sem-apc-ros-bridge` directories as these packages are only used for student development and are not allowed in the final submission.
 * The simulation will automatically end after either all goals have been reached or after it has been running for 10 minutes.
 
-The map and goal points will be revealed before the start of the competition.
+## Map an Goal Points
+This year's official competition map is `Town_01`
+![2025_map](images/2025_season_map.png)
+
+The green dot on the map indicates the starting point and the red dots indicate all goal waypoints. For the competition, the starting waypoint and fourteen target waypoints are as follows `[x,y,z]`:
+
+### Starting Waypoint
+```
+[280.363739,133.306351,0.001746]
+```
+### Goal Waypoints
+```
+[334.949799,161.106171,0.001736],
+[339.100037,258.568939,0.001679],
+[396.295319,183.195740,0.001678],
+[267.657074,1.983160,0.001678],
+[153.868896,26.115866,0.001678],
+[290.515564,56.175072,0.001677],
+[92.325722,86.063644,0.001677],
+[88.384346,287.468567,0.001728],
+[177.594101,326.386902,0.001677],
+[-1.646942,197.501282,0.001555],
+[59.701321,1.970804,0.001467],
+[122.100121,55.142044,0.001596],
+[161.030975,129.313187,0.001679],
+[184.758713,199.424271,0.001680]
+```
 
 ## Running the Example
 
