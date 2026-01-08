@@ -2,8 +2,6 @@
 
 This is a simple example project and guide meant to demonstrate the pipeline for testing and getting results for the Shell Eco-marathon APC.
 
-**Note:** This is the branch for the ROS2 Humble package. For info on the ROS1 Noetic package, navigate to the [ROS1 branch](https://github.com/swri-robotics/sem-apc-example-project).
-
 ## Requirements
 
 [Ubuntu Linux 22.04](https://ubuntu.com/download/desktop) and [ROS2 Humble](https://docs.ros.org/en/humble/)
@@ -12,7 +10,7 @@ Use the [APC Docker environment](https://github.com/swri-robotics/sem-apc-studen
 
 Important considerations for the competition:
 * Project submissions are compiled in a fresh Linux and ROS environment.
-* Any software dependencies must be defined properly in the [catkin package manifest](http://wiki.ros.org/catkin/package.xml) and will be installed at build time by [rosdep](http://wiki.ros.org/rosdep).
+* Any software dependencies and ROS packages used must be defined properly in the [catkin package manifest](http://wiki.ros.org/catkin/package.xml) and will be installed at build time by [rosdep](http://wiki.ros.org/rosdep).
 * All ROS packages must [install](http://wiki.ros.org/catkin/CMakeLists.txt#Optional_Step:_Specifying_Installable_Targets) themselves when built; the source code will not be present in the simulation environment, only installed targets.
 * All project submissions ***must*** have a package named `shell_simulation` with a launch file named `shell_simulation.launch.py` that requires no parameters or arguments in order to run; this is used as the entry point for launching the project.
 * Uploaded projects ***must*** be named `project.zip` and contain only the source code of ROS packages.
@@ -53,9 +51,9 @@ The green dot on the map indicates the starting point and the red dots indicate 
 
 ## Running the Example
 
-After building your [APC Docker environment](https://github.com/swri-robotics/sem-apc-student-docker-environment) (recommended) or installing and configuring ROS and CARLA locally, you should now be able to develop, build, and run your code to control the vehicle in simulation. Let's run an example that moves the vehicle forward to show you how to build and run your code to control the vehicle.
+After building your [APC Docker environment](https://github.com/swri-robotics/sem-apc-student-docker-environment) (recommended) or installing and configuring ROS and CARLA locally, you should now be able to develop, build, and run your code to control the vehicle in simulation. Let's run an example that moves the vehicle forward to show you how to build and run your code.
 
-1. If you are using Docker, make sure the carla_server and ros_environment containers are running and that you have entered your ros_environment container *(If you are running ROS and CARLA locally, startup CARLA and skip this step.)*:
+1. If you are using Docker, make sure the `carla_server` and `ros_environment` containers are running and that you have entered your `ros_environment` container *(If you are running ROS and CARLA locally, startup CARLA and skip this step.)*:
 
     `docker start carla_server ros_environment`
 
