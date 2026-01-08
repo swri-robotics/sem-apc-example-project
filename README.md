@@ -4,7 +4,7 @@ This is a simple example project and guide meant to demonstrate the pipeline for
 
 ## Requirements
 
-[Ubuntu Linux 22.04](https://ubuntu.com/download/desktop) and [ROS2 Humble](https://docs.ros.org/en/humble/)
+[Ubuntu Linux 22.04](https://releases.ubuntu.com/jammy/) and [ROS2 Humble](https://docs.ros.org/en/humble/)
 
 Use the [APC Docker environment](https://github.com/swri-robotics/sem-apc-student-docker-environment) to set up ROS and CARLA or set up [ROS](https://docs.ros.org/en/humble/Installation/Ubuntu-Install-Debs.html) and [CARLA](https://carla.readthedocs.io/en/0.9.15/start_quickstart/) locally.
 
