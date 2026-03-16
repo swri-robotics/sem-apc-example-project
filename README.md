@@ -71,6 +71,8 @@ After building your [APC Docker environment](https://github.com/swri-robotics/se
 
 - If you encounter a spawning error with the ego vehicle (`Exception caught: Spawn failed because of collision at spawn position`) you may need to change the spawn point parameter in the `carla_config.yaml` file. The Z coordinate may need to be set to something greater than 0. You can also change this parameter to "None" which will spawn the vehicle in a random, valid position on the map.
 
+- Before submitting, rebuild all code in a fresh docker environment to ensure it builds successfully. Submissions will be built in a fresh docker container containing only essential ROS and CARLA libraries, so this test will help ensure that all external dependencies will be installed through `rosdep`.
+
 ## Topics
 
 The following ROS topics are available within the simulation:
