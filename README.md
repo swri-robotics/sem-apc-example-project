@@ -6,48 +6,21 @@ This is a simple example project and guide meant to demonstrate the pipeline for
 
 [Ubuntu Linux 22.04](https://releases.ubuntu.com/jammy/) and [ROS2 Humble](https://docs.ros.org/en/humble/)
 
-Use the [APC Docker environment](https://github.com/swri-robotics/sem-apc-student-docker-environment) to set up ROS and CARLA or set up [ROS](https://docs.ros.org/en/humble/Installation/Ubuntu-Install-Debs.html) and [CARLA](https://carla.readthedocs.io/en/0.9.15/start_quickstart/) locally.
+Use the [APC Docker environment](https://github.com/swri-robotics/sem-apc-student-docker-environment) to set up ROS and CARLA or set up [ROS](https://docs.ros.org/en/humble/Installation/Ubuntu-Install-Debs.html) and [CARLA](https://carla.readthedocs.io/en/0.9.16/start_quickstart/) locally.
 
 Important considerations for the competition:
 * Project submissions are compiled in a fresh Linux and ROS environment.
 * Any software dependencies and ROS packages used must be defined properly in the [catkin package manifest](http://wiki.ros.org/catkin/package.xml) and will be installed at build time by [rosdep](http://wiki.ros.org/rosdep).
 * All ROS packages must [install](http://wiki.ros.org/catkin/CMakeLists.txt#Optional_Step:_Specifying_Installable_Targets) themselves when built; the source code will not be present in the simulation environment, only installed targets.
-* All project submissions ***must*** have a package named `shell_simulation` with a launch file named `shell_simulation.launch.py` that requires no parameters or arguments in order to run; this is used as the entry point for launching the project.
+* All project submissions ***must*** have a package named `shell_simulation` with a launch file named `shell_simulation.launch.py` that requires no parameters or arguments in order to run; this is used as the entry point for launching the project. Other team-made packages should be added to the `project` directory along with the `shell_simulation` package.
 * Uploaded projects ***must*** be named `project.zip` and contain only the source code of ROS packages.
-* Uploaded projects must also ***not include*** the `sem-apc-carla-interface` and `sem-apc-ros-bridge` directories as these packages are only used for student development and are not allowed in the final submission.
+* Uploaded projects must also ***not include*** the `sem-apc-carla-interface` directory as this package is only used for student development and are not allowed in the final submission.
 * The simulation will automatically end after either all goals have been reached or after it has been running for 10 minutes.
 
 The map and goal points will be revealed before the start of the competition.
 
 ## Map an Goal Points
-This year's official competition map is `Town_01`
-![2025_map](images/2025_season_map.png)
-
-The green dot on the map indicates the starting point and the red dots indicate all goal waypoints. For the competition, the starting waypoint and fourteen target waypoints are as follows:
-
-### Starting Waypoint
-`[x,y,z,roll,pitch,yaw]`
-```
-[280.363739,-129.306351,0.101746,0.00,0.00,180.00]
-```
-### Goal Waypoints
-`[x,y,z]`
-```
-[334.949799,-161.106171,0.001736],
-[339.100037,-258.568939,0.001679],
-[396.295319,-183.195740,0.001678],
-[267.657074,-1.983160,0.001678],
-[153.868896,-26.115866,0.001678],
-[290.515564,-56.175072,0.001677],
-[92.325722,-86.063644,0.001677],
-[88.384346,-287.468567,0.001728],
-[177.594101,-326.386902,0.001677],
-[-1.646942,-197.501282,0.001555],
-[59.701321,-1.970804,0.001467],
-[122.100121,-55.142044,0.001596],
-[161.030975,-129.313187,0.001679],
-[184.758713,-199.424271,0.001680]
-```
+*The official map and goal points for this year's competition will be revealed after the practice sessions have concluded.*
 
 ## Running the Example
 
@@ -104,30 +77,29 @@ The following ROS topics are available within the simulation:
 
 ```
 Published topics:
-  * /carla/ego_vehicle/collision [carla_msgs/CarlaCollisionEvent]
-  * /carla/ego_vehicle/depth_middle/image [sensor_msgs/Image]
-  * /carla/ego_vehicle/depth_middle/camera_info [sensor_msgs/CameraInfo]
-  * /carla/ego_vehicle/gnss [sensor_msgs/NavSatFix]
-  * /carla/ego_vehicle/imu [sensor_msgs/Imu]
-  * /carla/ego_vehicle/lane_invasion [carla_msgs/CarlaLaneInvasionEvent]
-  * /carla/ego_vehicle/odometry [nav_msgs/Odometry]
-  * /carla/ego_vehicle/speedometer [std_msgs/Float32]
-  * /carla/ego_vehicle/rgb_front [sensor_imgs/Image]
-  * /carla/ego_vehicle/vehicle_status [carla_msgs/CarlaEgoVehicleStatus]
-  * /carla/ego_vehicle/vlp16_1 [sensor_msgs/PointCloud2]
+  * /carla/hero/collision [carla_msgs/CarlaCollisionEvent]
+  * /carla/hero/depth_middle/image [sensor_msgs/Image]
+  * /carla/hero/depth_middle/camera_info [sensor_msgs/CameraInfo]
+  * /carla/hero/gnss [sensor_msgs/NavSatFix]
+  * /carla/hero/imu [sensor_msgs/Imu]
+  * /carla/hero/lane_invasion [carla_msgs/CarlaLaneInvasionEvent]
+  * /carla/hero/odometry [nav_msgs/Odometry]
+  * /carla/hero/speedometer [std_msgs/Float32]
+  * /carla/hero/rgb_front [sensor_imgs/Image]
+  * /carla/hero/vehicle_status [carla_msgs/CarlaEgoVehicleStatus]
+  * /carla/hero/vlp16_1 [sensor_msgs/PointCloud2]
   * /clock [rosgraph_msgs/Clock]
-  * /rosout [rosgraph_msgs/Log] 5 publishers
-  * /rosout_agg [rosgraph_msgs/Log]
+  * /rosout [rosgraph_msgs/Log]
   * /tf [tf2_msgs/TFMessage]
 
   These topics have data from sensors that can be used to observe the environment:
-  * /carla/ego_vehicle/depth_middle/image [sensor_msgs/Image]
-  * /carla/ego_vehicle/depth_middle/camera_info [sensor_msgs/CameraInfo]
-  * /carla/ego_vehicle/gnss [sensor_msgs/NavSatFix]
-  * /carla/ego_vehicle/lane_invasion [carla_msgs/CarlaLaneInvasionEvent]
-  * /carla/ego_vehicle/imu [sensor_msgs/Imu]
-  * /carla/ego_vehicle/odometry [nav_msgs/Odometry]
-  * /carla/ego_vehicle/vlp16_1 [sensor_msgs/PointCloud2]
+  * /carla/hero/depth_middle/image [sensor_msgs/Image]
+  * /carla/hero/depth_middle/camera_info [sensor_msgs/CameraInfo]
+  * /carla/hero/gnss [sensor_msgs/NavSatFix]
+  * /carla/hero/lane_invasion [carla_msgs/CarlaLaneInvasionEvent]
+  * /carla/hero/imu [sensor_msgs/Imu]
+  * /carla/hero/odometry [nav_msgs/Odometry]
+  * /carla/hero/vlp16_1 [sensor_msgs/PointCloud2]
 ```
 
 And messages can be published to this topic to control the vehicle:
