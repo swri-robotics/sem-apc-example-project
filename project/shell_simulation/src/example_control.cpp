@@ -15,11 +15,14 @@ int main(int argc, char *argv[])
   rclcpp::init(argc, argv);
   auto example_node = rclcpp::Node::make_shared("example_node");
 
+  // Set up QoS settings for publishers
+  rclcpp::QoS command_qos = rclcpp::QoS(rclcpp::KeepLast(1)).reliable().durability_volatile();
+
   // Set up publishers
-  auto brake_pub_ = example_node->create_publisher<std_msgs::msg::Float64>("brake_command", 1);
-  auto gear_pub_ = example_node->create_publisher<std_msgs::msg::String>("gear_command", 1);
-  auto steering_pub_ = example_node->create_publisher<std_msgs::msg::Float64>("steering_command", 1);
-  auto throttle_pub_ = example_node->create_publisher<std_msgs::msg::Float64>("throttle_command", 1);
+  auto brake_pub_ = example_node->create_publisher<std_msgs::msg::Float64>("brake_command", command_qos);
+  auto gear_pub_ = example_node->create_publisher<std_msgs::msg::String>("gear_command", command_qos);
+  auto steering_pub_ = example_node->create_publisher<std_msgs::msg::Float64>("steering_command", command_qos);
+  auto throttle_pub_ = example_node->create_publisher<std_msgs::msg::Float64>("throttle_command", command_qos);
 
   // Create control messages
   std_msgs::msg::Float64 brake_msg;
@@ -27,25 +30,29 @@ int main(int argc, char *argv[])
   std_msgs::msg::Float64 steering_msg;
   std_msgs::msg::Float64 throttle_msg;
 
-  // Set brake power to 0 and publish brake message
+  // Set brake power to 0 to allow the vehicle to move
   brake_msg.data = 0.0;
-  brake_pub_->publish(brake_msg);
 
-  // Set gear to forward and publish gear message
+  // Set gear to forward
   gear_msg.data = "forward";
-  gear_pub_->publish(gear_msg);
 
-  // Set steering position and publish steering message
+  // Set steering position to 0 for straight
   steering_msg.data = 0.0;
-  steering_pub_->publish(steering_msg);
 
-  // Set throttle to 0.3 and publish throttle message
+  // Set throttle to 0.3 to move the vehicle forward
   throttle_msg.data = 0.3;
-  throttle_pub_->publish(throttle_msg);
 
-  RCLCPP_INFO(example_node->get_logger(), "Test control messages have been published from C++. Vehicle should be moving!");
+  RCLCPP_INFO(example_node->get_logger(), "Test control messages are being published from C++.The vehicle should be moving!");
 
-  sleep(5.0);
+  // Publish control messages until the node is shut down
+  while (rclcpp::ok())
+  {
+    brake_pub_->publish(brake_msg);
+    gear_pub_->publish(gear_msg);
+    steering_pub_->publish(steering_msg);
+    throttle_pub_->publish(throttle_msg);
+    sleep(0.1);
+  }
 
   rclcpp::shutdown();
   return 0;
