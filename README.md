@@ -20,6 +20,7 @@ Important considerations for the competition:
 The map and goal points will be revealed before the start of the competition.
 
 ## Map an Goal Points
+
 *The official map and goal points for this year's competition will be revealed after the practice sessions have concluded.*
 
 ## Running the Example
@@ -54,7 +55,7 @@ After building your [APC Docker environment](https://github.com/swri-robotics/se
 
     *Note, you will need to relaunch the carla_shell_bridge for these changes to take effect.*
 
-6. Finally, open a new terminal, enter your ros_environment container and ROS workspace as shown in steps 1 and 2 *(skip step 1 if you are running ROS locally)*, and source your workspace as shown in step 4. You can now run either the C++ or Python example node that moves the vehicle forward!
+6. Finally, open a new terminal, enter your `ros_environment` container and ROS workspace as shown in steps 1 and 2 *(skip step 1 if you are running ROS locally)*, and source your workspace as shown in step 4. You can now run either the C++ or Python example node that moves the vehicle forward!
     
     `ros2 run shell_simulation example_control`
     
@@ -63,15 +64,15 @@ After building your [APC Docker environment](https://github.com/swri-robotics/se
     `ros2 run shell_simulation example_control.py`
 
 ## General Tips
-- Since your workspace is mounted to the ros_environment Docker container, you can simply edit your code locally in your ROS workspace with your favorite text editor, and all the changes will be synced to the Docker container automatically.
+- Since your workspace is mounted to the `ros_environment` Docker container, you can simply edit your code locally in your ROS workspace with your favorite text editor, and all the changes will be synced to the Docker container automatically.
 
 - While building your ROS packages, you can use the following command to only build a specific package which can greatly reduce build time:
 
   `colcon build --packages-select <YOUR_PACKAGE_NAME>`
 
-- If you encounter a spawning error with the ego vehicle (`Exception caught: Spawn failed because of collision at spawn position`) you may need to change the spawn point parameter in the `carla_config.yaml` file. The Z coordinate may need to be set to something greater than 0. You can also change this parameter to "None" which will spawn the vehicle in a random, valid position on the map.
+- If you encounter a spawning error with the ego vehicle (`Exception caught: Spawn failed because of collision at spawn position`) you may need to change the spawn point parameter in the `carla_config.yaml` file. The Z coordinate may need to be set to a value slightly greater than 0 in order to ensure the vehicle does not clip the ground. You can also change this parameter to "None" which will spawn the vehicle in a random, valid position on the map.
 
-- Before submitting, rebuild all code in a fresh docker environment to ensure all packages build successfully. Submissions will be built in a fresh docker container containing only essential ROS and CARLA packages, so this test will help ensure that all external dependencies will be installed through `rosdep`.
+- Before submitting, rebuild all code in a fresh Docker environment to ensure all packages build successfully. Submissions will be built in a fresh Docker container containing only essential ROS and CARLA packages, so this test will help ensure that all your external dependencies will be installed through `rosdep`.
 
 ## Topics
 
