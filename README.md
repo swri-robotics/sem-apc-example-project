@@ -45,9 +45,9 @@ After building your [APC Docker environment](https://github.com/swri-robotics/se
 
     `source install/setup.bash`
 
-5. Launch the carla_shell_bridge interface to setup the server world and spawn a vehicle to control:
+5. Launch the carla interface to setup the server world and spawn a vehicle to control:
 
-    `ros2 launch carla_shell_bridge main.launch.py`
+    `ros2 launch carla_interface main.launch.py`
 
     This should open up an Rviz window displaying vehicle sensor data.
 
