@@ -1,10 +1,13 @@
+"""
+This is an example launch file and the entry point for your software.
+"""
+
 from launch import LaunchDescription
 from launch_ros.actions import Node, SetParameter
 
-# Example ROS launch file
 def generate_launch_description():
     
-    # This sets use_sim_time=True for all subsequent nodes in this launch file, 
+    # Sets use_sim_time=True for all subsequent nodes in this launch file, 
     # which is required for correct time synchronization with the CARLA server 
     # when using ROS time.
     SetParameter(name='use_sim_time', value=True),
