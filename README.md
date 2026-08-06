@@ -12,9 +12,9 @@ Important considerations for the competition:
 * Project submissions are compiled in a fresh Linux and ROS environment.
 * Any software dependencies and ROS packages used must be defined properly in the [catkin package manifest](http://wiki.ros.org/catkin/package.xml) and will be installed at build time by [rosdep](http://wiki.ros.org/rosdep).
 * All ROS packages must [install](http://wiki.ros.org/catkin/CMakeLists.txt#Optional_Step:_Specifying_Installable_Targets) themselves when built; the source code will not be present in the simulation environment, only installed targets.
-* All project submissions ***must*** have a package named `shell_simulation` with a launch file named `shell_simulation.launch.py` that requires no parameters or arguments in order to run; this is used as the entry point for launching the project. Other team-made packages should be added to the `project` directory along with the `shell_simulation` package.
+* All project submissions ***must*** have a package named `shell_simulation` with a launch file named `shell_simulation.launch.py` that requires no parameters or arguments in order to run; this is used as the entry point for launching the submission. Other team-made packages should be added to the `project` directory along with the `shell_simulation` package.
 * Uploaded projects ***must*** be named `project.zip` and contain only the source code of ROS packages.
-* Uploaded projects must also ***not include*** the `sem-apc-carla-interface` directory as this package is only used for student development and are not allowed in the final submission.
+* Uploaded projects must also ***not include*** the `sem-apc-carla-interface` directory as this package is only used for student development and is not allowed in the final submission.
 * The simulation will automatically end after either all goals have been reached or after it has been running for 10 minutes.
 
 The map and goal points will be revealed before the start of the competition.
@@ -49,7 +49,7 @@ After building your [APC Docker environment](https://github.com/swri-robotics/se
 
     `ros2 launch carla_interface main.launch.py`
 
-    This should open up an Rviz window displaying vehicle sensor data.
+    This will open up an Rviz window displaying vehicle sensor data.
 
     There are also a variety of parameters within the [carla-interface](https://github.com/swri-robotics/sem-apc-carla-interface/tree/ros2) package that can be modified to configure the simulation and perform tasks such as selecting a different map, setting a spawn point, and generating traffic. To change these parameters, modify the values in the `carla_config.yaml` file located in your ROS workspace: `~/shell_ws/src/carla-interface/config/carla_config.yaml`
 
@@ -76,7 +76,7 @@ After building your [APC Docker environment](https://github.com/swri-robotics/se
 
 ## Topics
 
-The following ROS topics are available within the simulation:
+The following ROS topics can be subscribed to within the simulation:
 
 ```
 Published topics:
@@ -105,17 +105,17 @@ Published topics:
   * /carla/hero/vlp16_1 [sensor_msgs/PointCloud2]
 ```
 
-And messages can be published to this topic to control the vehicle:
+And messages can be published to these topics to control the vehicle:
 
 ```
   *  /brake_command [std_msgs/Float64]
-  Valid values range from 0.0 (no brake) to 1.0 (full brake)
+        Valid values range from 0.0 (no brake) to 1.0 (full brake)
   *  /gear_command [std_msgs/String]
-  Valid values are "forward" or "reverse"
+        Valid values are "forward" or "reverse"
   *  /handbrake_command [std_msgs/Bool]
-  If set to "true", throttle will be ignored
+        If set to "true", throttle will be ignored
   *  /steering_command [std_msgs/Float64]
-  Valid values range from -1.0 (full left) to 1.0 (full right)
+        Valid values range from -1.0 (full left) to 1.0 (full right)
   *  /throttle_command [std_msgs/Float64]
-  Valid values range from 0.0 (no throttle) to 1.0 (full throttle)
+        Valid values range from 0.0 (no throttle) to 1.0 (full throttle)
 ```
