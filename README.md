@@ -17,8 +17,6 @@ Important considerations for the competition:
 * Uploaded projects must also ***not include*** the `sem-apc-carla-interface` directory as this package is only used for student development and is not allowed in the final submission.
 * The simulation will automatically end after either all goals have been reached or after it has been running for 10 minutes.
 
-The map and goal points will be revealed before the start of the competition.
-
 ## Map an Goal Points
 
 *The official map and goal points for this year's competition will be revealed after the practice sessions have concluded.*
