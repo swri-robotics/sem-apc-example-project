@@ -110,8 +110,6 @@ And messages can be published to these topics to control the vehicle:
         Valid values range from 0.0 (no brake) to 1.0 (full brake)
   *  /gear_command [std_msgs/String]
         Valid values are "forward" or "reverse"
-  *  /handbrake_command [std_msgs/Bool]
-        If set to "true", throttle will be ignored
   *  /steering_command [std_msgs/Float64]
         Valid values range from -1.0 (full left) to 1.0 (full right)
   *  /throttle_command [std_msgs/Float64]
