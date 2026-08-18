@@ -84,7 +84,6 @@ Published topics:
   * /carla/hero/gnss [sensor_msgs/NavSatFix]
   * /carla/hero/imu [sensor_msgs/Imu]
   * /carla/hero/lane_invasion [carla_msgs/CarlaLaneInvasionEvent]
-  * /carla/hero/odometry [nav_msgs/Odometry]
   * /carla/hero/speedometer [std_msgs/Float32]
   * /carla/hero/rgb_front [sensor_imgs/Image]
   * /carla/hero/vehicle_status [carla_msgs/CarlaEgoVehicleStatus]
