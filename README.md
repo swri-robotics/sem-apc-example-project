@@ -1,3 +1,6 @@
+> [!CAUTION]
+> The Shell Autonomous Programming Competition no longer uses ROS1, making this branch obsolete. This branch is here only for reference and should not be used for the competition moving forward. For the official branch used in the competition, see the [ROS2 branch](https://github.com/swri-robotics/sem-apc-example-project/tree/ros2).
+
 # Example Project
 
 This is a simple example project and guide meant to demonstrate the pipeline for testing and getting results for the Shell Eco-marathon APC.
