@@ -1,4 +1,4 @@
-# Example Project
+# Shell APC Example Project
 
 This is a simple example project and guide meant to demonstrate the pipeline for testing and getting results for the Shell Eco-marathon APC.
 
